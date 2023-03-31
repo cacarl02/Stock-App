@@ -1,0 +1,23 @@
+<h1>Sign Up</h1>
+
+<%= form_with scope: :user, url: user_signup_path, local: true do |f| %>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    </p>
+    <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    </p>
+    <p>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :paswword_confirmation %>
+    </p>
+    
+    <%= f.submit 'Signup' %>
+<% end %>
+<%= link_to 'Return to Login', user_signin_path %>
