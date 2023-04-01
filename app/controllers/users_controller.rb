@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     end
 
     def new_session
+        if user = User.signin(user_params)
+            session[:user_id] = user.id
+            redirect_to user_signup_path
+        else
+            render json: { not_found: true }, status: 403
+        end
     end
 
     def new_account
@@ -19,6 +25,8 @@ class UsersController < ApplicationController
     end
 
     def logout
+        session[:user_id] = nil
+        redirect_to user_signin_path
     end
 
     private

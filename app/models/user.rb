@@ -14,4 +14,12 @@ class User < ApplicationRecord
 
         self.save
     end
+
+    def self.signin(user_params)
+        user = find_by(username: user_params[:username])
+
+        if user.present?
+            return user if Password.new(user.password) == user_params[:password]
+        end
+    end
 end
