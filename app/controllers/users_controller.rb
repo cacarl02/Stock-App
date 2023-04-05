@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     end
 
     def signup
+        @user = User.new(signup_params)
     end
 
     def new_session

@@ -1,7 +1,10 @@
 class User < ApplicationRecord
     include BCrypt
-    validates :username, uniqueness: true,
-                         presence: true
+    validates :password, presence: true
+    validates :name, presence: true        
+    validates :username, presence: true,
+                         uniqueness: true,
+                         length: { minimum: 5 }
     after_create :generate_token
 
     def self.signup(user_params)
